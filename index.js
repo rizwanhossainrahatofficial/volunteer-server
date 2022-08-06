@@ -33,12 +33,15 @@ async function run(){
   // api load
   app.post('/events',async(req,res)=>{
     const event= req.body;
+    console.log(event)
     const result=await registerCollection.insertOne(event)
+    console.log(result)
     res.json(result);
   })
 
   // volunteer list
   app.get('/event',async(req,res)=>{
+    console.log(req.body)
     const cursor=await registerCollection.find({});
     const result=await cursor.toArray();
     res.send(result);
